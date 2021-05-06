@@ -1,0 +1,188 @@
+[
+  {
+    "Language": "German",
+    "Salutation": "none",
+    "Gender": "none",
+    "LetterSalutation": "Sehr geehrte Damen und Herren"
+  },
+  {
+    "Language": "German",
+    "Salutation": "Herr",
+    "Gender": "Male",
+    "LetterSalutation": "Sehr geehrter Herr"
+  },
+  {
+    "Language": "German",
+    "Salutation": "Hr.",
+    "Gender": "Male",
+    "LetterSalutation": "Sehr geehrter Herr"
+  },
+  {
+    "Language": "German",
+    "Salutation": "Frau",
+    "Gender": "Female",
+    "LetterSalutation": "Sehr geehrte Frau"
+  },
+  {
+    "Language": "German",
+    "Salutation": "Fr.",
+    "Gender": "Female",
+    "LetterSalutation": "Sehr geehrte Frau"
+  },
+  {
+    "Language": "English",
+    "Salutation": "none",
+    "Gender": "none",
+    "LetterSalutation": "Dear Sirs"
+  },
+  {
+    "Language": "English",
+    "Salutation": "Mister",
+    "Gender": "Male",
+    "LetterSalutation": "Dear Mr"
+  },
+  {
+    "Language": "English",
+    "Salutation": "Sir",
+    "Gender": "Male",
+    "LetterSalutation": "Dear Mr"
+  },
+  {
+    "Language": "English",
+    "Salutation": "Mr",
+    "Gender": "Male",
+    "LetterSalutation": "Dear Mr"
+  },
+  {
+    "Language": "English",
+    "Salutation": "Mistress",
+    "Gender": "Female",
+    "LetterSalutation": ""
+  },
+  {
+    "Language": "English",
+    "Salutation": "Mrs",
+    "Gender": "Female",
+    "LetterSalutation": "Dear Mrs"
+  },
+  {
+    "Language": "English",
+    "Salutation": "Ms",
+    "Gender": "Female",
+    "LetterSalutation": "Dear Ms"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "none",
+    "Gender": "none",
+    "LetterSalutation": "Eregi Signori"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Signor",
+    "Gender": "Male",
+    "LetterSalutation": "Eregio Signor"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Sig",
+    "Gender": "Male",
+    "LetterSalutation": "Eregio Signor"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Signora",
+    "Gender": "Female",
+    "LetterSalutation": "Gentile Signora"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Sig.ra",
+    "Gender": "Female",
+    "LetterSalutation": "Gentile Signora"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Signorina",
+    "Gender": "Female",
+    "LetterSalutation": "Gentile Signorina"
+  },
+  {
+    "Language": "Italian",
+    "Salutation": "Sig.na",
+    "Gender": "Female",
+    "LetterSalutation": "Gentile Signorina"
+  },
+  {
+    "Language": "French",
+    "Salutation": "none",
+    "Gender": "none",
+    "LetterSalutation": "Messieursdames"
+  },
+  {
+    "Language": "French",
+    "Salutation": "Monsieur",
+    "Gender": "Male",
+    "LetterSalutation": "Monsieur"
+  },
+  {
+    "Language": "French",
+    "Salutation": "M",
+    "Gender": "Male",
+    "LetterSalutation": "Monsieur"
+  },
+  {
+    "Language": "French",
+    "Salutation": "Madame",
+    "Gender": "Female",
+    "LetterSalutation": "Madame"
+  },
+  {
+    "Language": "French",
+    "Salutation": "Mme",
+    "Gender": "Female",
+    "LetterSalutation": "Madame"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "none",
+    "Gender": "none",
+    "LetterSalutation": "Estimados Señores y Señoras"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Señor",
+    "Gender": "Male",
+    "LetterSalutation": "Estimado Señor"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Sr",
+    "Gender": "Male",
+    "LetterSalutation": "Estimado Señor"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Señora",
+    "Gender": "Female",
+    "LetterSalutation": "Estimada Señora"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Sra",
+    "Gender": "Female",
+    "LetterSalutation": "Estimada Señora"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Señorita",
+    "Gender": "Female",
+    "LetterSalutation": "Estimada Señorita"
+  },
+  {
+    "Language": "Spain",
+    "Salutation": "Srta",
+    "Gender": "Female",
+    "LetterSalutation": "Estimada Señorita"
+  }
+]
