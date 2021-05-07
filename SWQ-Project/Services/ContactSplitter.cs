@@ -8,6 +8,11 @@ namespace SWQ_Project.Services
 {
     public class ContactSplitter : IContactSpillter
     {
+        /// <summary>
+        /// Split inputstring into individual parts of the contact
+        /// </summary>
+        /// <param name="completeContactModel">inputstring</param>
+        /// <returns>Object with the individual parts oft the contact</returns>
         public SplitContact Split(CompleteContactModel completeContactModel )
         {
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
@@ -26,7 +31,6 @@ namespace SWQ_Project.Services
                     gender = Gender.Female;
                     break;
             }
-
 
             return new SplitContact
             {
