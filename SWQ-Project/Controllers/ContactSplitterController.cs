@@ -21,13 +21,13 @@ namespace SWQ_Project.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost("title")]
         public async Task<IActionResult> Title()
         {
             return Ok();
         }
         
-        [HttpPost]
+        [HttpPost("salutation")]
         public async Task<IActionResult> Salutation()
         {
             return Ok();
