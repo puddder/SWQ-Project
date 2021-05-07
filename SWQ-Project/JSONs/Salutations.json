@@ -147,42 +147,42 @@
     "Language": "Spain",
     "Salutation": "none",
     "Gender": "none",
-    "LetterSalutation": "Estimados Señores y Señoras"
+    "LetterSalutation": "Estimados Seï¿½ores y Seï¿½oras"
   },
   {
     "Language": "Spain",
-    "Salutation": "Señor",
+    "Salutation": "Seï¿½or",
     "Gender": "Male",
-    "LetterSalutation": "Estimado Señor"
+    "LetterSalutation": "Estimado Seï¿½or"
   },
   {
     "Language": "Spain",
     "Salutation": "Sr",
     "Gender": "Male",
-    "LetterSalutation": "Estimado Señor"
+    "LetterSalutation": "Estimado Seï¿½or"
   },
   {
     "Language": "Spain",
-    "Salutation": "Señora",
+    "Salutation": "Seï¿½ora",
     "Gender": "Female",
-    "LetterSalutation": "Estimada Señora"
+    "LetterSalutation": "Estimada Seï¿½ora"
   },
   {
     "Language": "Spain",
     "Salutation": "Sra",
     "Gender": "Female",
-    "LetterSalutation": "Estimada Señora"
+    "LetterSalutation": "Estimada Seï¿½ora"
   },
   {
     "Language": "Spain",
-    "Salutation": "Señorita",
+    "Salutation": "Seï¿½orita",
     "Gender": "Female",
-    "LetterSalutation": "Estimada Señorita"
+    "LetterSalutation": "Estimada Seï¿½orita"
   },
   {
     "Language": "Spain",
     "Salutation": "Srta",
     "Gender": "Female",
-    "LetterSalutation": "Estimada Señorita"
+    "LetterSalutation": "Estimada Seï¿½orita"
   }
 ]
