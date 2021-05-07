@@ -3,9 +3,11 @@
     public class CompleteContactModel
     {
         public string CompleteContact { get; set; }
-        public CompleteContactModel(string completeContact )
+        public CompleteContactModel(string completeContact)
         {
             CompleteContact = completeContact;
         }
+
+        public CompleteContactModel() { }
     }
 }

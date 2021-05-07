@@ -1,7 +1,9 @@
-﻿namespace SWQ_Project.Services
+﻿using SWQ_Project.Models;
+
+namespace SWQ_Project.Services
 {
-    public class IContactSpillter
+    public interface IContactSpillter
     {
-        
+        public SplitContact Split(CompleteContactModel model);
     }
 }

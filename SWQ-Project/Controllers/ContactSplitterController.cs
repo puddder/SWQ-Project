@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SWQ_Project.Models;
 using SWQ_Project.Services;
 
 namespace SWQ_Project.Controllers
@@ -16,9 +17,10 @@ namespace SWQ_Project.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SplitContact()
+        public async Task<IActionResult> SplitContact([FromQuery] CompleteContactModel model)
         {
-            return Ok();
+            var response = _contactSpillter.Split(model);
+            return Ok(response);
         }
 
         [HttpPost("title")]
