@@ -97,12 +97,12 @@ namespace SWQ_Project_Test
         [Test]
         public void Test07()
         {
-            string name = "Frau Prof. Dr. rer. nat. Maria von Leuth�userSchnarrenberger";
+            string name = "Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
             Assert.True(contact.Salutation == "Frau Prof. Dr. rer. nat."); //Das oder nur Frau?
             Assert.True(contact.Title == "Prof. Dr. rer. nat.");
             Assert.True(contact.Firstname == "Maria");
-            Assert.True(contact.Lastname == "von Leuth�user-Schnarrenberger");
+            Assert.True(contact.Lastname == "von Leuthäuser-Schnarrenberger");
             Assert.True(contact.LetterSalutation == "");
             //Assert.True(contact.Gender == Gender.Female);
         }
@@ -111,12 +111,12 @@ namespace SWQ_Project_Test
         [Test]
         public void Test08()
         {
-            string name = "Herr Dipl. Ing. Max von M�ller";
+            string name = "Herr Dipl. Ing. Max von Müller";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
             Assert.True(contact.Salutation == "Herr");
             Assert.True(contact.Title == "Dipl. Ing.");
             Assert.True(contact.Firstname == "Max");
-            Assert.True(contact.Lastname == "von M�ller");
+            Assert.True(contact.Lastname == "von Müller");
             Assert.True(contact.LetterSalutation == "");
             //Assert.True(contact.Gender == Gender.Female);
         }
