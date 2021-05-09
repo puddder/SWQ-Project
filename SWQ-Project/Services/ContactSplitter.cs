@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using SWQ_Project.Models;
@@ -32,15 +33,42 @@ namespace SWQ_Project.Services
                     break;
             }
 
+            // Get Lastname
+            jsonString = File.ReadAllText("JSONs/Prefix.json");
+            var lastnamePrefixes = JsonSerializer.Deserialize<List<string>>(jsonString);
+            var lastname = GetLastname(lastnamePrefixes, completeContactModel.CompleteContact, words);
+
+            //Create return object
             return new SplitContact
             {
                 Firstname = "",
-                Lastname = "",
+                Lastname = lastname,
                 Title = "",
                 Salutation = salutation.Salutation,
                 LetterSalutation = letterSalutation,
                 Gender = gender
             };
+        }
+
+        /// <summary>
+        /// Get lastname
+        /// </summary>
+        /// <param name="lastnamePrefixes">List of prefixes for lastnames</param>
+        /// <param name="fllName">Full name</param>
+        /// <param name="words">Full name split into single words</param>
+        /// <returns></returns>
+        private string GetLastname(List<string> lastnamePrefixes, string fllName, string[] words)
+        {
+            if (lastnamePrefixes.Any(fllName.Contains))
+            {
+                var prefix = lastnamePrefixes.OrderByDescending(s => s.Length).ToList().Find(fllName.Contains);
+                var prefixLength = prefix.Split(' ').Length;
+
+                var lastName = string.Join(' ', words[(words.Length-prefixLength-1)..]);
+                return lastName;
+            }
+
+            return words[^1];
         }
 
         /// <summary>
