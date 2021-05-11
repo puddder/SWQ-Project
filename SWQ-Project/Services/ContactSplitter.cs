@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using SWQ_Project.Models;
 
@@ -14,12 +15,14 @@ namespace SWQ_Project.Services
         /// </summary>
         /// <param name="completeContactModel">inputstring</param>
         /// <returns>Object with the individual parts oft the contact</returns>
-        public SplitContact Split(CompleteContactModel completeContactModel )
+        public SplitContact Split(CompleteContactModel completeContactModel)
         {
+            //Split Input into seperated words
+            var words = completeContactModel.CompleteContact.Trim().Split(' ');
+
+            //Get Salutation
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
             var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
-            var words = completeContactModel.CompleteContact.Split(' ');
-
             var salutation = GetSalutation(salutations, words[0]);
             Gender gender = Gender.Unknown;
             string letterSalutation = salutation.LetterSalutation;
@@ -51,6 +54,19 @@ namespace SWQ_Project.Services
         }
 
         /// <summary>
+        /// Add new Salutation to JSON
+        /// </summary>
+        /// <param name="model">Salutation to add</param>
+        public void CreateSalutation(SalutationModel model)
+        {
+            string jsonString = File.ReadAllText("JSONs/Salutations.json");
+            var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
+            salutations.Add(model);
+            jsonString = JsonSerializer.Serialize(salutations);
+            File.WriteAllText("JSONs/Salutations.json", jsonString);
+        }
+
+        /// <summary>
         /// Get lastname
         /// </summary>
         /// <param name="lastnamePrefixes">List of prefixes for lastnames</param>
@@ -64,7 +80,7 @@ namespace SWQ_Project.Services
                 var prefix = lastnamePrefixes.OrderByDescending(s => s.Length).ToList().Find(fllName.Contains);
                 var prefixLength = prefix.Split(' ').Length;
 
-                var lastName = string.Join(' ', words[(words.Length-prefixLength-1)..]);
+                var lastName = string.Join(' ', words[(words.Length - prefixLength - 1)..]);
                 return lastName;
             }
 
@@ -77,7 +93,7 @@ namespace SWQ_Project.Services
         /// <param name="salutations">List of salutations (get from json)</param>
         /// <param name="toCheck">word to check</param>
         /// <returns>SalutationModel: Language, Salutation, Gender, LetterSalutation</returns>
-        public SalutationModel GetSalutation(List<SalutationModel> salutations, string toCheck)
+        private SalutationModel GetSalutation(List<SalutationModel> salutations, string toCheck)
         {
             foreach (var salutation in salutations)
             {

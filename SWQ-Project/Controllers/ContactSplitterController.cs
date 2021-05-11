@@ -30,8 +30,9 @@ namespace SWQ_Project.Controllers
         }
         
         [HttpPost("salutation")]
-        public async Task<IActionResult> Salutation()
+        public async Task<IActionResult> Salutation(SalutationModel model)
         {
+            _contactSpillter.CreateSalutation(model); 
             return Ok();
         }
     }
