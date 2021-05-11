@@ -129,8 +129,8 @@ namespace SWQ_Project_Test
             var contact = contactSplitter.Split(new CompleteContactModel(name));
             Assert.True(contact.Salutation == "");
             Assert.True(contact.Title == "Dr.");
-            Assert.True(contact.Firstname == "Winfried");
-            Assert.True(contact.Lastname == "Russwurm");
+            Assert.True(contact.Firstname == "Russwurm");
+            Assert.True(contact.Lastname == "Winfried");
             Assert.True(contact.LetterSalutation == "");
             //Assert.True(contact.Gender == Gender.Unknown);
         }

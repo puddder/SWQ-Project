@@ -40,11 +40,15 @@ namespace SWQ_Project.Services
             jsonString = File.ReadAllText("JSONs/Prefix.json");
             var lastnamePrefixes = JsonSerializer.Deserialize<List<string>>(jsonString);
             var lastname = GetLastname(lastnamePrefixes, completeContactModel.CompleteContact, words);
+            
+            // Get Firstname
+            var lastnameRemoved = completeContactModel.CompleteContact.Replace(lastname, "");
+            var firstname = lastnameRemoved.Trim().Split(' ')[^1].Replace(",", "");
 
             //Create return object
             return new SplitContact
             {
-                Firstname = "",
+                Firstname = firstname,
                 Lastname = lastname,
                 Title = "",
                 Salutation = salutation.Salutation,

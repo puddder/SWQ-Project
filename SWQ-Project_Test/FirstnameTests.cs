@@ -5,7 +5,7 @@ using SWQ_Project.Controllers;
 
 namespace SWQ_Project_Test
 {
-    public class LastnameTests
+    public class FirstnameTests
     {
         public ContactSplitter contactSplitter { get; set; }
         [SetUp]
@@ -19,8 +19,7 @@ namespace SWQ_Project_Test
         {
             string name = "Frau Sandra Berger";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Berger");
-
+            Assert.True(contact.Firstname == "Sandra");
         }
 
         [Test]
@@ -28,7 +27,7 @@ namespace SWQ_Project_Test
         {
             string name = "Herr Dr. Sandro Gutmensch";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Gutmensch");
+            Assert.True(contact.Firstname == "Sandro");
         }
 
         [Test]
@@ -36,7 +35,7 @@ namespace SWQ_Project_Test
         {
             string name = "Professor Heinreich Freiherr vom Wald";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Freiherr vom Wald"); //???
+            Assert.True(contact.Firstname == "Heinreich");
         }
 
         [Test]
@@ -44,7 +43,7 @@ namespace SWQ_Project_Test
         {
             string name = "Mrs. Doreen Faber";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Faber");
+            Assert.True(contact.Firstname == "Doreen");
         }
 
         [Test]
@@ -52,7 +51,7 @@ namespace SWQ_Project_Test
         {
             string name = "Mme. Charlotte Noir";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Noir");
+            Assert.True(contact.Firstname == "Charlotte");
         }
 
 
@@ -61,7 +60,7 @@ namespace SWQ_Project_Test
         {
             string name = "Estobar y Gonzales"; //Was passiert mit dem "y"?
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "y Gonzales");
+            Assert.True(contact.Firstname == "Estobar");
         }
 
 
@@ -70,7 +69,7 @@ namespace SWQ_Project_Test
         {
             string name = "Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "von Leuthäuser-Schnarrenberger");
+            Assert.True(contact.Firstname == "Maria");
         }
 
 
@@ -79,7 +78,7 @@ namespace SWQ_Project_Test
         {
             string name = "Herr Dipl. Ing. Max von Müller";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "von Müller");
+            Assert.True(contact.Firstname == "Max");
         }
 
 
@@ -88,7 +87,7 @@ namespace SWQ_Project_Test
         {
             string name = "Dr. Russwurm, Winfried";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Winfried");
+            Assert.True(contact.Firstname == "Russwurm");
         }
 
 
@@ -97,7 +96,7 @@ namespace SWQ_Project_Test
         {
             string name = "Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Lastname == "Steffens");
+            Assert.True(contact.Firstname == "Paul");
         }
     }
 }
