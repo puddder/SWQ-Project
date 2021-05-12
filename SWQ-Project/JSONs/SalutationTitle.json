@@ -1,0 +1,22 @@
+[
+  {
+    "Short": "Prof.",
+    "Gender": "Female",
+    "Title": "Professorin"
+  },
+  {
+    "Short": "Prof.",
+    "Gender": "Male",
+    "Title": "Professor"
+  },
+  {
+    "Short": "Dr.",
+    "Gender": "Female",
+    "Title": "Doktorin"
+  },
+  {
+    "Short": "Dr.",
+    "Gender": "Male",
+    "Title": "Doktor"
+  }
+]

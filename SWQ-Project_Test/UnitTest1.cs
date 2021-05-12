@@ -23,8 +23,8 @@ namespace SWQ_Project_Test
             Assert.True(contact.Title == "");
             Assert.True(contact.Firstname == "Sandra");
             Assert.True(contact.Lastname == "Berger");
-            Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Female);
+            Assert.True(contact.LetterSalutation == "Sehr geehrte Frau");
+            Assert.True(contact.Gender == Gender.Female);
         }
 
         [Test]
@@ -32,12 +32,12 @@ namespace SWQ_Project_Test
         {
             string name = "Herr Dr. Sandro Gutmensch";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Herr"); //Herr oder Herr Dr.?
+            Assert.True(contact.Salutation == "Herr");
             Assert.True(contact.Title == "Dr.");
             Assert.True(contact.Firstname == "Sandro");
             Assert.True(contact.Lastname == "Gutmensch");
-            Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Male);
+            Assert.True(contact.LetterSalutation == "Sehr geehrter Herr Dr.");
+            Assert.True(contact.Gender == Gender.Male);
         }
 
         [Test]
@@ -45,12 +45,12 @@ namespace SWQ_Project_Test
         {
             string name = "Professor Heinreich Freiherr vom Wald";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == ""); //Herr oder Herr Professor?
+            Assert.True(contact.Salutation == "");
             Assert.True(contact.Title == "Professor");
             Assert.True(contact.Firstname == "Heinreich");
-            Assert.True(contact.Lastname == "Freiherr vom Wald"); //???
+            Assert.True(contact.Lastname == "Freiherr vom Wald");
             Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Unknown);
+            Assert.True(contact.Gender == Gender.Male);
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace SWQ_Project_Test
             Assert.True(contact.Firstname == "Doreen");
             Assert.True(contact.Lastname == "Faber");
             Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Female);
+            Assert.True(contact.Gender == Gender.Female);
         }
 
         [Test]
@@ -76,21 +76,21 @@ namespace SWQ_Project_Test
             Assert.True(contact.Firstname == "Charlotte");
             Assert.True(contact.Lastname == "Noir");
             Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Female);
+            Assert.True(contact.Gender == Gender.Female);
         }
 
 
         [Test]
         public void Test06()
         {
-            string name = "Estobar y Gonzales"; //Was passiert mit dem "y"?
+            string name = "Estobar y Gonzales";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
             Assert.True(contact.Salutation == "");
             Assert.True(contact.Title == "");
             Assert.True(contact.Firstname == "Estobar");
             Assert.True(contact.Lastname == "y Gonzales");
             Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Unknown);
+            Assert.True(contact.Gender == Gender.Unknown);
         }
 
 
@@ -99,12 +99,12 @@ namespace SWQ_Project_Test
         {
             string name = "Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Frau Prof. Dr. rer. nat."); //Das oder nur Frau?
+            Assert.True(contact.Salutation == "Frau");
             Assert.True(contact.Title == "Prof. Dr. rer. nat.");
             Assert.True(contact.Firstname == "Maria");
             Assert.True(contact.Lastname == "von Leuthäuser-Schnarrenberger");
-            Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Female);
+            Assert.True(contact.LetterSalutation == "Sehr geehrte Frau Prof.");
+            Assert.True(contact.Gender == Gender.Female);
         }
 
 
@@ -117,8 +117,8 @@ namespace SWQ_Project_Test
             Assert.True(contact.Title == "Dipl. Ing.");
             Assert.True(contact.Firstname == "Max");
             Assert.True(contact.Lastname == "von Müller");
-            Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Female);
+            Assert.True(contact.LetterSalutation == "Sehr geehrter Herr");
+            Assert.True(contact.Gender == Gender.Male);
         }
 
 
@@ -132,7 +132,7 @@ namespace SWQ_Project_Test
             Assert.True(contact.Firstname == "Russwurm");
             Assert.True(contact.Lastname == "Winfried");
             Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Unknown);
+            Assert.True(contact.Gender == Gender.Unknown);
         }
 
 
@@ -145,8 +145,8 @@ namespace SWQ_Project_Test
             Assert.True(contact.Title == "Dr.-Ing. Dr. rer. nat. Dr. h.c. mult.");
             Assert.True(contact.Firstname == "Paul");
             Assert.True(contact.Lastname == "Steffens");
-            Assert.True(contact.LetterSalutation == "");
-            //Assert.True(contact.Gender == Gender.Male);
+            Assert.True(contact.LetterSalutation == "Sehr geehrter Herr Dr.");
+            Assert.True(contact.Gender == Gender.Male);
         }
     }
 }

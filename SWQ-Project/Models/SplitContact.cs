@@ -5,6 +5,7 @@
         public string LetterSalutation { get; set; }
         public string Salutation { get; set; }
         public string Title { get; set; }
+        public string SalutationTitle { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public Gender Gender { get; set; }

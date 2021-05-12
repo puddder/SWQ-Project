@@ -26,35 +26,58 @@ namespace SWQ_Project.Services
             var salutation = GetSalutation(salutations, words[0]);
             Gender gender = Gender.Unknown;
             string letterSalutation = salutation.LetterSalutation;
-            switch (salutation.Gender)
-            {
-                case "Male":
-                    gender = Gender.Male;
-                    break;
-                case "Female":
-                    gender = Gender.Female;
-                    break;
-            }
+            gender = ParseGender(salutation.Gender);
 
             // Get Lastname
             jsonString = File.ReadAllText("JSONs/Prefix.json");
             var lastnamePrefixes = JsonSerializer.Deserialize<List<string>>(jsonString);
             var lastname = GetLastname(lastnamePrefixes, completeContactModel.CompleteContact, words);
-            
+
             // Get Firstname
             var lastnameRemoved = completeContactModel.CompleteContact.Replace(lastname, "");
             var firstname = lastnameRemoved.Trim().Split(' ')[^1].Replace(",", "");
+
+            // Get Title
+            var titleJsonString = File.ReadAllText("JSONs/Title.json");
+            var salutationTitleJsonStrig = File.ReadAllText("JSONs/SalutationTitle.json");
+            var allTitle = GetTitle(titleJsonString, completeContactModel.CompleteContact);
+            var salutationTitle = GetSalutationTitle(salutationTitleJsonStrig, completeContactModel.CompleteContact, gender);
+            if (!string.IsNullOrWhiteSpace(salutationTitle.Short) && !string.IsNullOrWhiteSpace(letterSalutation))
+                letterSalutation += " " + salutationTitle.Short;
+            if (gender == Gender.Unknown && salutationTitle.Gender != Gender.Unknown.ToString())
+                gender = ParseGender(salutationTitle.Gender);
 
             //Create return object
             return new SplitContact
             {
                 Firstname = firstname,
                 Lastname = lastname,
-                Title = "",
+                Title = allTitle,
+                SalutationTitle = salutationTitle.Short,
                 Salutation = salutation.Salutation,
                 LetterSalutation = letterSalutation,
                 Gender = gender
             };
+        }
+
+        /// <summary>
+        /// Parse gender string to gender enum.
+        /// </summary>
+        /// <param name="gender">Gender string</param>
+        /// <returns>gender enum</returns>
+        private Gender ParseGender(string gender)
+        {
+            switch (gender)
+            {
+                case "Male":
+                    return Gender.Male;
+                    break;
+                case "Female":
+                    return Gender.Female;
+                    break;
+                default:
+                    return Gender.Unknown;
+            }
         }
 
         /// <summary>
@@ -89,6 +112,90 @@ namespace SWQ_Project.Services
             }
 
             return words[^1];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="letterTitleJsonString">All valid salutaion titles.</param>
+        /// <param name="title">All titles of inputted string.</param>
+        /// <returns>Salutation title</returns>
+        public SalutationTitleModel GetSalutationTitle(string letterTitleJsonString, string title, Gender gender)
+        {
+            var titles = JsonSerializer.Deserialize<List<SalutationTitleModel>>(letterTitleJsonString);
+
+            foreach (var salutationTitle in titles)
+            {
+                if (gender == Gender.Unknown)
+                {
+                    if (title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
+                        return salutationTitle;
+                }
+                else if (salutationTitle.Gender == gender.ToString() && title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
+                    return salutationTitle;
+            }
+            return new SalutationTitleModel
+            {
+                Short = "",
+                Title = "",
+                Gender = ""
+            };
+        }
+
+        /// <summary>
+        /// Get all valid titles in entered order.
+        /// </summary>
+        /// <param name="titleJsonString">List of all valid title.</param>
+        /// <param name="completeContact">Inputted string from user.</param>
+        /// <returns>All valid title</returns>
+        private string GetTitle(string titleJsonString, string completeContact)
+        {
+            //validate titles
+            var contactTemp = completeContact;
+            var allTitles = JsonSerializer.Deserialize<List<string>>(titleJsonString);
+            List<string> titleList = new List<string>();
+            foreach (string t in allTitles)
+            {
+                if (contactTemp.Contains(t))
+                {
+                    titleList.Add(t);
+                    contactTemp = contactTemp.Replace(t, "");
+                }
+            }
+
+            //reorder validated titles
+            List<int> orderIndex = new List<int>();
+            foreach (var tempTitle in titleList)
+            {
+                orderIndex.Add(completeContact.IndexOf(tempTitle));
+            }
+            int next = -1;
+            List<string> titleInOrder = new List<string>();
+            foreach (int z in orderIndex)
+            {
+                int temp = int.MaxValue;
+                for (int index = 0; index < titleList.Count; index++)
+                {
+                    if (orderIndex[index] < temp)
+                    {
+                        temp = orderIndex[index];
+                        next = index;
+                    }
+                }
+                titleInOrder.Add(titleList[next]);
+                titleList.RemoveAt(next);
+            }
+
+            //output in right order
+            string title = "";
+            foreach (string t in titleInOrder)
+            {
+                if (title.Count() != 0)
+                    title += " " + t;
+                else
+                    title += t;
+            }
+            return title;
         }
 
         /// <summary>
