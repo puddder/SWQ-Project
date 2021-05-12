@@ -41,11 +41,10 @@ namespace SWQ_Project.Services
             var titleJsonString = File.ReadAllText("JSONs/Title.json");
             var salutationTitleJsonStrig = File.ReadAllText("JSONs/SalutationTitle.json");
             var allTitle = GetTitle(titleJsonString, completeContactModel.CompleteContact);
-            var salutationTitle = GetSalutationTitle(salutationTitleJsonStrig, completeContactModel.CompleteContact, gender);
+            SalutationTitleModel salutationTitle;
+            (salutationTitle, gender) = GetSalutationTitle(salutationTitleJsonStrig, completeContactModel.CompleteContact, gender);
             if (!string.IsNullOrWhiteSpace(salutationTitle.Short) && !string.IsNullOrWhiteSpace(letterSalutation))
                 letterSalutation += " " + salutationTitle.Short;
-            if (gender == Gender.Unknown && salutationTitle.Gender != Gender.Unknown.ToString())
-                gender = ParseGender(salutationTitle.Gender);
 
             //Create return object
             return new SplitContact
@@ -145,12 +144,12 @@ namespace SWQ_Project.Services
         }
 
         /// <summary>
-        /// 
+        /// Get the Salutation Title and tries to find out gender if necessary
         /// </summary>
         /// <param name="letterTitleJsonString">All valid salutaion titles.</param>
         /// <param name="title">All titles of inputted string.</param>
-        /// <returns>Salutation title</returns>
-        public SalutationTitleModel GetSalutationTitle(string letterTitleJsonString, string title, Gender gender)
+        /// <returns>Salutation title and optional gender, if gender was unknown and title gives a hint to the gender.</returns>
+        public (SalutationTitleModel, Gender) GetSalutationTitle(string letterTitleJsonString, string title, Gender gender)
         {
             var titles = JsonSerializer.Deserialize<List<SalutationTitleModel>>(letterTitleJsonString);
 
@@ -158,19 +157,25 @@ namespace SWQ_Project.Services
             {
                 if (gender == Gender.Unknown)
                 {
-                    if (title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short)) 
-                        return salutationTitle;
+                    if (title.Contains(salutationTitle.Title))
+                    {
+                        if (gender == Gender.Unknown && salutationTitle.Gender != Gender.Unknown.ToString())
+                            gender = ParseGender(salutationTitle.Gender);
+                        return (salutationTitle, gender);
+                    }
+                    if(title.Contains(salutationTitle.Short))
+                        return (salutationTitle, gender);
 
                 }
                 else if (salutationTitle.Gender == gender.ToString() && title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
-                    return salutationTitle;
+                    return (salutationTitle, gender);
             }
-            return new SalutationTitleModel
+            return (new SalutationTitleModel
             {
                 Short = "",
                 Title = "",
                 Gender = ""
-            };
+            }, gender);
         }
 
         /// <summary>
