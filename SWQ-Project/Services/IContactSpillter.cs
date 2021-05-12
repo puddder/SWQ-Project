@@ -5,6 +5,7 @@ namespace SWQ_Project.Services
     public interface IContactSpillter
     {
         public SplitContact Split(CompleteContactModel model);
-        public void CreateSalutation(SalutationModel model);
+        public bool CreateSalutation(SalutationModel model);
+        public bool CreateTitle(string toAdd);
     }
 }

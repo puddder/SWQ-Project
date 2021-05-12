@@ -84,13 +84,43 @@ namespace SWQ_Project.Services
         /// Add new Salutation to JSON
         /// </summary>
         /// <param name="model">Salutation to add</param>
-        public void CreateSalutation(SalutationModel model)
+        public bool CreateSalutation(SalutationModel model)
         {
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
             var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
+            foreach (var salutation in salutations)
+            {
+                if (salutation.Salutation.Equals(model.Salutation))
+                {
+                    return false;
+                }
+            }
             salutations.Add(model);
             jsonString = JsonSerializer.Serialize(salutations);
             File.WriteAllText("JSONs/Salutations.json", jsonString);
+            return true;
+        }
+
+        /// <summary>
+        /// Add Title to JSON
+        /// </summary>
+        /// <param name="toAdd">Title to add</param>
+        /// <returns></returns>
+        public bool CreateTitle(string toAdd)
+        {
+            string jsonString = File.ReadAllText("JSONs/Title.json");
+            var titles = JsonSerializer.Deserialize<List<string>>(jsonString);
+            foreach (var title in titles)
+            {
+                if (title.Equals(toAdd))
+                {
+                    return false;
+                }
+            }
+            titles.Add(toAdd);
+            jsonString = JsonSerializer.Serialize(titles);
+            File.WriteAllText("JSONs/Title.json", jsonString);
+            return true;
         }
 
         /// <summary>
@@ -128,8 +158,9 @@ namespace SWQ_Project.Services
             {
                 if (gender == Gender.Unknown)
                 {
-                    if (title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
+                    if (title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short)) 
                         return salutationTitle;
+
                 }
                 else if (salutationTitle.Gender == gender.ToString() && title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
                     return salutationTitle;
@@ -206,6 +237,10 @@ namespace SWQ_Project.Services
         /// <returns>SalutationModel: Language, Salutation, Gender, LetterSalutation</returns>
         private SalutationModel GetSalutation(List<SalutationModel> salutations, string toCheck)
         {
+            if (toCheck.EndsWith('.'))
+            {
+                toCheck = toCheck.Substring(0,toCheck.Length - 1);
+            }
             foreach (var salutation in salutations)
             {
                 if (toCheck.ToLower().Equals(salutation.Salutation.ToLower()))

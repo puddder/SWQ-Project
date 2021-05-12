@@ -24,16 +24,23 @@ namespace SWQ_Project.Controllers
         }
 
         [HttpPost("title")]
-        public async Task<IActionResult> Title()
+        public async Task<IActionResult> Title(string title)
         {
-            return Ok();
+            if (_contactSpillter.CreateTitle(title))
+            {
+                return Ok();
+            }
+            return BadRequest("Title already exist.");
         }
         
         [HttpPost("salutation")]
         public async Task<IActionResult> Salutation(SalutationModel model)
         {
-            _contactSpillter.CreateSalutation(model); 
-            return Ok();
+            if (_contactSpillter.CreateSalutation(model))
+            {
+                return Ok();
+            }
+            return BadRequest("Salutation already exist.");
         }
     }
 }
