@@ -157,17 +157,17 @@ namespace SWQ_Project.Services
             {
                 if (gender == Gender.Unknown)
                 {
-                    if (title.Contains(salutationTitle.Title))
+                    if (title.ToLower().Contains(salutationTitle.Title.ToLower()))
                     {
                         if (gender == Gender.Unknown && salutationTitle.Gender != Gender.Unknown.ToString())
                             gender = ParseGender(salutationTitle.Gender);
                         return (salutationTitle, gender);
                     }
-                    if(title.Contains(salutationTitle.Short))
+                    if (title.ToLower().Contains(salutationTitle.Short.ToLower()))
                         return (salutationTitle, gender);
 
                 }
-                else if (salutationTitle.Gender == gender.ToString() && title.Contains(salutationTitle.Title) || title.Contains(salutationTitle.Short))
+                else if (salutationTitle.Gender == gender.ToString() && title.ToLower().Contains(salutationTitle.Title.ToLower()) || title.ToLower().Contains(salutationTitle.Short.ToLower()))
                     return (salutationTitle, gender);
             }
             return (new SalutationTitleModel
@@ -192,7 +192,7 @@ namespace SWQ_Project.Services
             List<string> titleList = new List<string>();
             foreach (string t in allTitles)
             {
-                if (contactTemp.Contains(t))
+                if (contactTemp.ToLower().Contains(t.ToLower()))
                 {
                     titleList.Add(t);
                     contactTemp = contactTemp.Replace(t, "");
