@@ -33,10 +33,6 @@ namespace SWQ_Project.Services
             var lastnamePrefixes = JsonSerializer.Deserialize<List<string>>(jsonString);
             var lastname = GetLastname(lastnamePrefixes, completeContactModel.CompleteContact, words);
 
-            // Get Firstname
-            var lastnameRemoved = completeContactModel.CompleteContact.Replace(lastname, "");
-            var firstname = lastnameRemoved.Trim().Split(' ')[^1].Replace(",", "");
-
             // Get Title
             var titleJsonString = File.ReadAllText("JSONs/Title.json");
             var salutationTitleJsonStrig = File.ReadAllText("JSONs/SalutationTitle.json");
@@ -45,6 +41,24 @@ namespace SWQ_Project.Services
             (salutationTitle, gender) = GetSalutationTitle(salutationTitleJsonStrig, completeContactModel.CompleteContact, gender);
             if (!string.IsNullOrWhiteSpace(salutationTitle.Short) && !string.IsNullOrWhiteSpace(letterSalutation))
                 letterSalutation += " " + salutationTitle.Short;
+            
+            // Get Firstname
+            string lastnameRemoved = completeContactModel.CompleteContact;
+            if (lastname != string.Empty)
+            {
+                lastnameRemoved = completeContactModel.CompleteContact.Replace(lastname, "");
+            }
+            string salutationRemoved = lastnameRemoved;
+            if (salutation.Salutation != string.Empty)
+            {
+                salutationRemoved = lastnameRemoved.Replace(salutation.Salutation, "");
+            }
+            string titleRemoved = salutationRemoved;
+            if (allTitle != string.Empty)
+            {
+                titleRemoved = salutationRemoved.Replace(allTitle, "");
+            }
+            var firstname = titleRemoved.Trim().Replace(",", "");
 
             //Create return object
             return new SplitContact
