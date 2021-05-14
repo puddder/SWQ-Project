@@ -61,11 +61,11 @@ namespace SWQ_Project_Test
         {
             string name = "Mrs. Doreen Faber";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Mrs."); //TODO Mit oder ohne "."?
+            Assert.True(contact.Salutation == "Mrs."); 
             Assert.True(contact.Title == "");
             Assert.True(contact.Firstname == "Doreen");
             Assert.True(contact.Lastname == "Faber");
-            Assert.True(contact.LetterSalutation == "Dear Mrs."); //TODO Mit oder ohne "."?
+            Assert.True(contact.LetterSalutation == "Dear Mrs."); 
             Assert.True(contact.Gender == Gender.Female);
         }
 
@@ -74,11 +74,11 @@ namespace SWQ_Project_Test
         {
             string name = "Mme. Charlotte Noir";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Mme."); //TODO Mit oder ohne "."?
+            Assert.True(contact.Salutation == "Mme."); 
             Assert.True(contact.Title == "");
             Assert.True(contact.Firstname == "Charlotte");
             Assert.True(contact.Lastname == "Noir");
-            Assert.True(contact.LetterSalutation == ""); //TODO ?
+            Assert.True(contact.LetterSalutation == "Madame");
             Assert.True(contact.Gender == Gender.Female);
         }
 
@@ -172,6 +172,7 @@ namespace SWQ_Project_Test
             jsonString = JsonSerializer.Serialize(titles);
             File.WriteAllText("JSONs/Title.json", jsonString);
         }
+
         [Test]
         public void Test12()
         {

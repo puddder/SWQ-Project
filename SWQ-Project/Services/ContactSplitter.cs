@@ -242,10 +242,14 @@ namespace SWQ_Project.Services
         /// <returns>SalutationModel: Language, Salutation, Gender, LetterSalutation</returns>
         private SalutationModel GetSalutation(List<SalutationModel> salutations, string toCheck)
         {
-            if (toCheck.EndsWith('.'))
+            foreach (var salutation in salutations)
             {
-                toCheck = toCheck.Substring(0,toCheck.Length - 1);
+                if (toCheck.ToLower().Equals(salutation.Salutation.ToLower()))
+                {
+                    return salutation;
+                }
             }
+            toCheck += '.';
             foreach (var salutation in salutations)
             {
                 if (toCheck.ToLower().Equals(salutation.Salutation.ToLower()))

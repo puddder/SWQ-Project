@@ -46,7 +46,7 @@ namespace SWQ_Project_Test
         {
             string name = "Mrs. Doreen Faber";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Mrs");
+            Assert.True(contact.Salutation == "Mrs.");
             Assert.True(contact.Gender == Gender.Female);
         }
 
@@ -55,7 +55,7 @@ namespace SWQ_Project_Test
         {
             string name = "Mme. Charlotte Noir";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
-            Assert.True(contact.Salutation == "Mme");
+            Assert.True(contact.Salutation == "Mme.");
             Assert.True(contact.Gender == Gender.Female);
         }
 

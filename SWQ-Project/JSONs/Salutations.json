@@ -13,7 +13,7 @@
   },
   {
     "Language": "German",
-    "Salutation": "Hr",
+    "Salutation": "Hr.",
     "Gender": "Male",
     "LetterSalutation": "Sehr geehrter Herr"
   },
@@ -25,7 +25,7 @@
   },
   {
     "Language": "German",
-    "Salutation": "Fr",
+    "Salutation": "Fr.",
     "Gender": "Female",
     "LetterSalutation": "Sehr geehrte Frau"
   },
@@ -39,19 +39,19 @@
     "Language": "English",
     "Salutation": "Mister",
     "Gender": "Male",
-    "LetterSalutation": "Dear Mr"
+    "LetterSalutation": "Dear Mr."
   },
   {
     "Language": "English",
     "Salutation": "Sir",
     "Gender": "Male",
-    "LetterSalutation": "Dear Mr"
+    "LetterSalutation": "Dear Mr."
   },
   {
     "Language": "English",
-    "Salutation": "Mr",
+    "Salutation": "Mr.",
     "Gender": "Male",
-    "LetterSalutation": "Dear Mr"
+    "LetterSalutation": "Dear Mr."
   },
   {
     "Language": "English",
@@ -61,15 +61,15 @@
   },
   {
     "Language": "English",
-    "Salutation": "Mrs",
+    "Salutation": "Mrs.",
     "Gender": "Female",
-    "LetterSalutation": "Dear Mrs"
+    "LetterSalutation": "Dear Mrs."
   },
   {
     "Language": "English",
-    "Salutation": "Ms",
+    "Salutation": "Ms.",
     "Gender": "Female",
-    "LetterSalutation": "Dear Ms"
+    "LetterSalutation": "Dear Ms."
   },
   {
     "Language": "Italian",
@@ -85,7 +85,7 @@
   },
   {
     "Language": "Italian",
-    "Salutation": "Sig",
+    "Salutation": "Sig.",
     "Gender": "Male",
     "LetterSalutation": "Eregio Signor"
   },
@@ -127,7 +127,7 @@
   },
   {
     "Language": "French",
-    "Salutation": "M",
+    "Salutation": "M.",
     "Gender": "Male",
     "LetterSalutation": "Monsieur"
   },
@@ -139,7 +139,7 @@
   },
   {
     "Language": "French",
-    "Salutation": "Mme",
+    "Salutation": "Mme.",
     "Gender": "Female",
     "LetterSalutation": "Madame"
   },
@@ -157,7 +157,7 @@
   },
   {
     "Language": "Spain",
-    "Salutation": "Sr",
+    "Salutation": "Sr.",
     "Gender": "Male",
     "LetterSalutation": "Estimado Se\u00F1or"
   },
@@ -169,7 +169,7 @@
   },
   {
     "Language": "Spain",
-    "Salutation": "Sra",
+    "Salutation": "Sra.",
     "Gender": "Female",
     "LetterSalutation": "Estimada Se\u00F1ora"
   },
@@ -181,7 +181,7 @@
   },
   {
     "Language": "Spain",
-    "Salutation": "Srta",
+    "Salutation": "Srta.",
     "Gender": "Female",
     "LetterSalutation": "Estimada Se\u00F1orita"
   }
