@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using NUnit.Framework;
 using SWQ_Project.Models;
 using SWQ_Project.Services;
@@ -148,5 +151,54 @@ namespace SWQ_Project_Test
             Assert.True(contact.LetterSalutation == "Sehr geehrter Herr Dr.");
             Assert.True(contact.Gender == Gender.Male);
         }
+
+        [Test]
+        public void Test11()
+        {
+            //Create Title
+            string title = "Testtitle";
+            var create = contactSplitter.CreateTitle(title);
+            Assert.True(create);
+
+            //Check Title
+            string name = "Herr Testtitle Max Mustermann";
+            var contact = contactSplitter.Split(new CompleteContactModel(name));
+            Assert.True(contact.Title.Equals(title));
+
+            //Delete Title
+            string jsonString = File.ReadAllText("JSONs/Title.json");
+            var titles = JsonSerializer.Deserialize<List<string>>(jsonString);
+            titles.RemoveAt(titles.Count-1);
+            jsonString = JsonSerializer.Serialize(titles);
+            File.WriteAllText("JSONs/Title.json", jsonString);
+        }
+        [Test]
+        public void Test12()
+        {
+            //Create Title
+            var salutation = new SalutationModel
+            {
+                Language = "German",
+                Salutation = "Testsalutation",
+                Gender = "Female",
+                LetterSalutation = "Sehr geehrte Tessalutation"
+            };
+
+            var create = contactSplitter.CreateSalutation(salutation);
+            Assert.True(create);
+
+            //Check Title
+            string name = "Testsalutation Karin Musterfrau";
+            var contact = contactSplitter.Split(new CompleteContactModel(name));
+            Assert.True(contact.Salutation.Equals(salutation.Salutation));
+
+            //Delete Title
+            string jsonString = File.ReadAllText("JSONs/Salutations.json");
+            var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
+            salutations.RemoveAt(salutations.Count-1);
+            jsonString = JsonSerializer.Serialize(salutations);
+            File.WriteAllText("JSONs/Salutations.json", jsonString);
+        }
+
     }
 }

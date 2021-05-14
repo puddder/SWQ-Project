@@ -96,7 +96,7 @@ namespace SWQ_Project_Test
             string name = "Dr. Russwurm, Winfried";
             var contact = contactSplitter.Split(new CompleteContactModel(name));
             Assert.True(contact.Salutation == "");
-            //Assert.True(contact.Gender == Gender.Unknown);
+            Assert.True(contact.Gender == Gender.Unknown);
         }
 
 
