@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -47,17 +48,17 @@ namespace SWQ_Project.Services
             string lastnameRemoved = completeContactModel.CompleteContact;
             if (lastname != string.Empty)
             {
-                lastnameRemoved = completeContactModel.CompleteContact.Replace(lastname, "");
+                lastnameRemoved = completeContactModel.CompleteContact.Remove(completeContactModel.CompleteContact.Length - lastname.Length - 1);
             }
             string salutationRemoved = lastnameRemoved;
             if (salutation.Salutation != string.Empty)
             {
-                salutationRemoved = lastnameRemoved.Replace(salutation.Salutation, "");
+                salutationRemoved = lastnameRemoved.Replace(salutation.Salutation, "", true, CultureInfo.CurrentCulture);
             }
             string titleRemoved = salutationRemoved;
             if (allTitle != string.Empty)
             {
-                titleRemoved = salutationRemoved.Replace(allTitle, "");
+                titleRemoved = salutationRemoved.Replace(allTitle, "", true, CultureInfo.CurrentCulture);
             }
             var firstname = titleRemoved.Trim().Replace(",", "");
 
@@ -159,7 +160,14 @@ namespace SWQ_Project.Services
         /// <returns></returns>
         private string GetLastname(List<string> lastnamePrefixes, string fllName, string[] words)
         {
-            if (lastnamePrefixes.Any(fllName.Contains))
+
+            var prefixes = new List<string>();
+            foreach (var prefix in lastnamePrefixes)
+            {
+                prefixes.Add(" " + prefix + "");
+            }
+            
+            if (prefixes.Any(fllName.Contains))
             {
                 var prefix = lastnamePrefixes.OrderByDescending(s => s.Length).ToList().Find(fllName.Contains);
                 var prefixLength = prefix.Split(' ').Length;
