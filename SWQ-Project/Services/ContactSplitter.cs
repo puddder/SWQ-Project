@@ -103,6 +103,10 @@ namespace SWQ_Project.Services
         {
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
             var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
+            if (String.IsNullOrEmpty(model.Salutation) || String.IsNullOrEmpty(model.LetterSalutation))
+            {
+                return false;
+            }
             foreach (var salutation in salutations)
             {
                 if (salutation.Salutation.Equals(model.Salutation))
@@ -125,6 +129,10 @@ namespace SWQ_Project.Services
         {
             string jsonString = File.ReadAllText("JSONs/Title.json");
             var titles = JsonSerializer.Deserialize<List<string>>(jsonString);
+            if (String.IsNullOrEmpty(toAdd))
+            {
+                return false;
+            }
             foreach (var title in titles)
             {
                 if (title.Equals(toAdd))

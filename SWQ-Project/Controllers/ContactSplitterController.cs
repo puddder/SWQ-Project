@@ -30,7 +30,7 @@ namespace SWQ_Project.Controllers
             {
                 return Ok();
             }
-            return BadRequest("Title already exist.");
+            return BadRequest("Title is invalid or already exist.");
         }
         
         [HttpPost("salutation")]
@@ -40,7 +40,7 @@ namespace SWQ_Project.Controllers
             {
                 return Ok();
             }
-            return BadRequest("Salutation already exist.");
+            return BadRequest("Salutation is invalid or already exist.");
         }
     }
 }
