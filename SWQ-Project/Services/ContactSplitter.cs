@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -69,7 +70,8 @@ namespace SWQ_Project.Services
                 SalutationTitle = salutationTitle.Short,
                 Salutation = salutation.Salutation,
                 LetterSalutation = letterSalutation,
-                Gender = gender
+                Gender = gender,
+                Language = salutation.Language
             };
         }
 
