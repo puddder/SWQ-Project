@@ -103,7 +103,11 @@ namespace SWQ_Project.Services
         {
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
             var salutations = JsonSerializer.Deserialize<List<SalutationModel>>(jsonString);
-            if (String.IsNullOrEmpty(model.Salutation) || String.IsNullOrEmpty(model.LetterSalutation))
+            if (String.IsNullOrEmpty(model.LetterSalutation))
+            {
+                model.LetterSalutation = "";
+            }
+            if (String.IsNullOrEmpty(model.Salutation))
             {
                 return false;
             }
