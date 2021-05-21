@@ -19,8 +19,10 @@ namespace SWQ_Project.Services
         /// <returns>Object with the individual parts oft the contact</returns>
         public SplitContact Split(CompleteContactModel completeContactModel)
         {
+            completeContactModel.CompleteContact = completeContactModel.CompleteContact.Trim();
+
             //Split Input into seperated words
-            var words = completeContactModel.CompleteContact.Trim().Split(' ');
+            var words = completeContactModel.CompleteContact.Split(' ');
 
             //Get Salutation
             string jsonString = File.ReadAllText("JSONs/Salutations.json");
@@ -48,7 +50,7 @@ namespace SWQ_Project.Services
             string lastnameRemoved = completeContactModel.CompleteContact;
             if (lastname != string.Empty)
             {
-                lastnameRemoved = completeContactModel.CompleteContact.Remove(completeContactModel.CompleteContact.Length - lastname.Length - 1);
+                lastnameRemoved = completeContactModel.CompleteContact.Remove(completeContactModel.CompleteContact.Length - lastname.Length );
             }
             string salutationRemoved = lastnameRemoved;
             if (salutation.Salutation != string.Empty)
