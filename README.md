@@ -15,6 +15,6 @@ Ich weiß ich bin fertig, wenn das Geschlecht, bei passenden Eingaben, zurückge
 - Als Sachbearbeiter wünsche ich mir die Möglichkeit eigene Anreden mit einer Sprache, dem zugehörigen Geschlecht und einer Briefanrede zu definieren, weil ich somit neue Anreden miteinbeziehen kann.
 Ich weiß ich bin fertig, wenn die Anrede als solcher von dem Kontaktsplitter erkannt und richtig zugeteilt wird und auch die Sprache, Geschlecht und Briefanrede passend zurückgegeben werden.
 
-## Release Notes
+## Ausprobieren
 Die Benutzeroberfläche des MVPs des Kontaktsplitters wird auf einem S3 Server auf der AWS Cloud betrieben. Um auf diesen zugreifen zu können, wird folgende URI verwendet:
 [Webseite](http://contactsplitter.s3-website.eu-central-1.amazonaws.com/)
