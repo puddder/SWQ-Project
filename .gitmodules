@@ -1,0 +1,3 @@
+[submodule "SWQ-Angular"]
+	path = SWQ-Angular
+	url = https://github.com/puddder/SWQ-Project.git
