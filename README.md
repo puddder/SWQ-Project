@@ -1,5 +1,5 @@
 # Kontaktsplitter
-Projektaufge Kontaktsplitter im Rahmen der Vorlseung "Softwarequalität".
+Projektaufgabe Kontaktsplitter im Rahmen der Vorlseung "Softwarequalität".
 
 ## User Stories
 - Als Sachbearbeiter wünsche ich mir die Funktion, welche eine Anrede mit Namen in ihre Bestandteile zerlegt und darstellt, weil ich diese Bestandteile in einer Datenbank abspeichern möchte. 
