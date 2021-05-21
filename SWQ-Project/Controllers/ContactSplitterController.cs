@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SWQ_Project.Models;
 using SWQ_Project.Services;
@@ -19,7 +20,28 @@ namespace SWQ_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> SplitContact([FromQuery] CompleteContactModel model)
         {
-            var response = _contactSpillter.Split(model);
+            SplitContact response;
+            try
+            {
+                response = _contactSpillter.Split(model);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Please enter name in valid format");
+            }
+            
+            if (response.Firstname is null
+            && response.Lastname is null
+            && response.Gender == Gender.Unknown
+            && response.Language is null
+            && response.Salutation is null
+            && response.Title is null
+            && response.LetterSalutation is null
+            && response.SalutationTitle is null)
+            {
+                return BadRequest("Please enter name in valid format");
+            }
+            
             return Ok(response);
         }
 
